@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.query.mapper.orderMapper">
+    <resultMap id="OrderResult" type="com.example.query.entity.order">
+        <id column="id" property="id"/>
+        <result column="desktopId" property="desktopId"/>
+        <result column="food" property="food"/>
+        <result column="drink" property="drink"/>
+    </resultMap>
+    <select id="findAll" resultMap="OrderResult">
+        select * from food_order
+    </select>
+    <select id="findByDesktopId" resultType="com.example.query.entity.order" parameterType="java.lang.Integer">
+        select * from food_order where desktopId=#{desktopId}
+    </select>
+    <insert id="insert" parameterType="com.example.query.entity.order">
+        insert into food_order (desktopId, food, drink) values (#{desktopId},#{food},#{drink})
+    </insert>
+    <delete id="delete">
+        delete from food_order
+    </delete>
+</mapper>

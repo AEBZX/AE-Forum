@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.query.mapper.desktopMapper">
+    <resultMap id="DesktopResult" type="com.example.query.entity.desktop">
+        <id column="id" property="id"/>
+        <result column="floor" property="floor"/>
+        <result column="address" property="address"/>
+        <result column="number" property="number"/>
+        <result column="desktop" property="desktop"/>
+    </resultMap>
+    <select id="findAll" resultMap="DesktopResult">
+        select * from desktop
+    </select>
+    <select id="findById" parameterType="com.example.query.entity.desktop">
+        select * from desktop where id=#{id}
+    </select>
+    <select id="findByPage" resultType="com.example.query.entity.desktop" >
+        select  * from desktop limit #{page},#{size}
+    </select>
+    <select id="findByCount" resultType="long">
+        select count(1) from desktop
+    </select>
+</mapper>

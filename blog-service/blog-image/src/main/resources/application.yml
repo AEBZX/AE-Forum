@@ -1,0 +1,22 @@
+server:
+  port: 6204
+spring:
+  application:
+    name: blog-image
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 20120412
+    url: jdbc:mysql://localhost:3306/blog
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6201/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}

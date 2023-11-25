@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.query.mapper.foodMapper">
+    <resultMap id="FoodResult" type="com.example.query.entity.food">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="money" property="money"/>
+    </resultMap>
+    <select id="findAll" resultMap="FoodResult">
+        select * from food
+    </select>
+    <select id="findById" resultType="com.example.query.entity.food">
+        select * from food where id=#{id}
+    </select>
+    <select id="findByPage" resultType="com.example.query.entity.food" >
+        select  * from drink limit #{page},#{size}
+    </select>
+    <select id="findByCount" resultType="long">
+        select count(1) from drink
+    </select>
+</mapper>

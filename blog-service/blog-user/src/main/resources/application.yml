@@ -1,0 +1,36 @@
+server:
+  port: 6203
+spring:
+  application:
+    name: blog-user
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 20120412
+    url: jdbc:mysql://localhost:3306/blog
+  mail:
+    host: smtp.qq.com
+    username: 3647049231@qq.com
+    password: yprczxzmyfbcdaca
+    port: 465
+    default-encoding: UTF-8
+    protocol: smtps
+    properties:
+      "mail.smtp.connectiontimeout": 5000
+      "mail.smtp.timeout": 3000
+      "mail.smtp.writetimeout": 5000
+      "mail.smtp.auth": true
+      "mail.smtp.starttls.enable": true
+      "mail.smtp.starttls.required": true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database: mysql
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6201/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}

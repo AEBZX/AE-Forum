@@ -1,0 +1,22 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://39.104.201.171:6101/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+spring:
+  datasource:
+    username: root
+    password: 20120412
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.104.201.171:3306/system
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: system-login
+server:
+  port: 6102
